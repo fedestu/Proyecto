@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Computacion.Models.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Buscar Usuario</h2>
+
+<p>Nombre o Apellido del Usuario: <input id="TextUsuario" autocomplete="off" /><input type="button" value="Buscar" onclick="BuscarUsuario()" class="btn btn-danger"/></p>
+<p>DNI del Usuario: <input id="TextUsuarioDni" autocomplete="off" /><input type="button" value="Buscar" onclick="BuscarUsuarioPorDni()" class="btn btn-danger"/></p>
+<div id="DivDinamicoArticulo"></div>
+
+<script src="~/Scripts/Mis Scripts/Usuarios.js"></script>

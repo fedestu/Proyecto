@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Computacion.Models.Categoria>
+
+@{
+    ViewBag.Title = "ListaCategoria";
+}
+
+<h2>Categoria</h2>
+<p></p>
+<p></p>
+<br />
+@*@Html.ActionLink("Página Principal", "Index", "Home")*@
+<a href="@Url.Action("Index", "Home")" class="btn btn-danger">Página Principal</a>
+<p></p>
+<p></p>
+<br />
+<link href="~/Content/Lista.css" rel="stylesheet" />
+
+<div>
+    @{ int i = 0;}
+    @foreach (var item in Model.OrderBy(x => x.Descripcion))
+    {
+        i++;
+        if (i % 3 == 0)
+        {
+            <div class="row">
+                <div class="column" id="borderDemo">
+                    <h4 align="center">@Html.DisplayFor(modelItem => item.Descripcion) </h4> <br>
+                    <h4 align="center"><a href="@Url.Action("ListaSubCategoria", "SubCategoria", new {id = item.Id})" class="btn btn-danger">Seleccionar</a></h4>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="column" id="borderDemo">
+                <h4 align="center">@Html.DisplayFor(modelItem => item.Descripcion) </h4> <br>
+                <h4 align="center"><a href="@Url.Action("ListaSubCategoria", "SubCategoria", new {id = item.Id})" class="btn btn-danger">Seleccionar</a></h4>
+            </div>
+        }
+    }
+</div>
+@*@Html.ActionLink("Seleccionar", "ListaSubCategoria", "SubCategoria", new { id = item.Id }, null)*@

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Computacion.Models.VentaDetalle>
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Details";
+}
+<link href="~/Content/Lista2.css" rel="stylesheet" />
+<h2>Detalle de la Compra</h2>
+
+
+<table class="table">
+    <tr class="danger">
+        <th>
+            @Html.DisplayNameFor(model => model.DescripcionArticulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrecioUnitario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>     
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr class="info">        
+        <td>            
+            @Html.DisplayFor(modelItem => item.DescripcionArticulo)
+        </td>
+        <td>
+            $@Html.DisplayFor(modelItem => item.PrecioUnitario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cantidad)
+        </td>        
+        <td>
+            $@Html.DisplayFor(modelItem => item.Total)            
+        </td>        
+    </tr>}
+    
+</table>
+<h3>Total: $@ViewBag.Total</h3>
+<p>
+    @if (Computacion.Models.IdentityExtensions.GetUsuarioRol(User.Identity).Equals(99))
+    {
+        <a href="@Url.Action("ListaVentas")" class="btn btn-danger">Volver a la Lista de Ventas</a>
+        @*@Html.ActionLink("Ver Lista de Compras del Usuario", "ListaVentasUsuarioBack", "VentaMaster", new { id = idVentas }, null)*@
+        @*@Html.ActionLink("Volver a la Lista de Ventas", "ListaVentas")*@
+    }
+    else
+    {
+        <a href="@Url.Action("Index")" class="btn btn-danger">Volver a la Lista</a>
+        @*@Html.ActionLink("Volver a la Lista", "Index")*@
+    }
+
+</p>

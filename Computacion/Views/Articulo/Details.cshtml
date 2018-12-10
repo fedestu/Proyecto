@@ -1,0 +1,88 @@
+﻿@model Computacion.Models.Articulo
+
+<div>
+    <h4>Articulo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioVenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioVenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionCategoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdSubCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionSubCategoria)
+        </dd>
+
+        <dt>
+            Cantidad
+        </dt>
+
+        <dd>
+            <input id="Cantidad" type="number" value="1"/>
+        </dd>
+
+        <div class="form-group" hidden="hidden">
+            @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.DescripcionCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionCategoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescripcionSubCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionSubCategoria)
+        </dd>*@
+
+    </dl>
+</div>
+<p>
+    <a href="javascript:void(0);" class="btn btn-danger" onclick="AgregarDetalle()">Agregar</a>
+    <a href="@Url.Action("ListaArticulos", "Articulo", new {id = Model.IdSubCategoria})" class="btn btn-danger" >Volver a Artículos</a>
+    @*<a href="javascript:void(0);" onclick="AgregarDetalle()"> Agregar </a>*@
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+</p>
+@*<p>@Html.ActionLink("Volver a Articulos", "ListaArticulos", new { controller = "Articulo", id = ViewBag.SubCategoria})</p>*@
+<script src="~/Scripts/Mis Scripts/CargarCarrito.js"></script>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Computacion.Models.Venta>
+
+@{
+    ViewBag.Title = "ListaVentasUsuario";
+}
+
+<h2>ListaVentasUsuario</h2>
+
+
+<table class="table">
+    <tr class="danger">
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th> 
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="info">
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            <a href="@Url.Action("Details", new {id = item.Id})" class="btn btn-success">Ver Venta</a>
+            @*@Html.ActionLink("Ver Venta", "Details", new { id = item.Id })*@
+        </td>
+    </tr>
+}
+
+</table>

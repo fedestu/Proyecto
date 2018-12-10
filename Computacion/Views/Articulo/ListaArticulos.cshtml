@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Computacion.Models.Articulo>
+
+@{
+    ViewBag.Title = "ListaArticulos";
+}
+
+<h2>Articulos</h2>
+@*@Html.ActionLink("Volver a SubCategoría", "ListaSubCategoria", new { controller = "SubCategoria", id = ViewBag.Categoria })*@
+<a href="@Url.Action("ListaSubCategoria", "SubCategoria", new {id = ViewBag.Categoria})" class="btn btn-danger">Volver a SubCategoría</a>
+<p></p>
+<p></p>
+<br />
+<link href="~/Content/Lista.css" rel="stylesheet" />
+
+<div>
+    @{ int i = 0;}
+    @foreach (var item in Model.OrderBy(x => x.PrecioVenta))
+    {
+        i++;
+        if (i % 3 == 0)
+        {
+            <div class="row">
+                <div class="column" id="borderDemo">
+                    <h4 align="center">@Html.DisplayFor(modelItem => item.Descripcion) </h4> <br>
+                    <h4 align="center">Stock: @Html.DisplayFor(modelItem => item.Stock) </h4> <br>
+                    <h4 align="center">$@Html.DisplayFor(modelItem => item.PrecioVenta) </h4> <br />
+                    <h4 align="center"><a href="@Url.Action("Details", new {id = item.Id})" class="btn btn-danger">Ver Detalles</a></h4>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="column" id="borderDemo">
+                <h4 align="center">@Html.DisplayFor(modelItem => item.Descripcion) </h4> <br>
+                <h4 align="center">Stock: @Html.DisplayFor(modelItem => item.Stock) </h4> <br>
+                <h4 align="center">$@Html.DisplayFor(modelItem => item.PrecioVenta) </h4> <br />
+                <h4 align="center"><a href="@Url.Action("Details", new {id = item.Id})" class="btn btn-danger">Ver Detalles</a> </h4>
+            </div>
+        }
+    }
+</div>
+
+
+
+@*@Html.ActionLink("Ver Detalles", "Details", new { id = item.Id })*@ 

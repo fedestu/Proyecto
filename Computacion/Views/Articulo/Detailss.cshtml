@@ -1,0 +1,95 @@
+﻿@model Computacion.Models.Articulo
+
+@{
+    ViewBag.Title = "Detailss";
+}
+
+<h2>Detailss</h2>
+
+<div>
+    <h4>Articulo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            Precio de Compra
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioCompra)
+        </dd>
+
+        <dt>
+            Precio de Venta
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioVenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdCategoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdSubCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdSubCategoria)
+        </dd>
+
+        <dt>
+            Fecha de Baja
+        </dt>
+
+        <dd>
+            @if (Model.FechaBaja == null || Model.FechaBaja == "")
+            {
+                Model.FechaBaja = "No posee";
+            }            
+            @Html.DisplayFor(model => model.FechaBaja)  
+        </dd>
+
+        <dt>
+            Categoría
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionCategoria)
+        </dd>
+
+        <dt>
+            SubCategoría
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionSubCategoria)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-danger">Volver a la Lista</a>
+    <a href="@Url.Action("Edit", new {id = Model.Id})" class="btn btn-danger">Editar Artículo</a>
+    @*@Html.ActionLink("Back to List", "Index")*@
+</p>

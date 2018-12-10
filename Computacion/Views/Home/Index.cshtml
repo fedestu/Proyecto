@@ -1,0 +1,99 @@
+﻿@{
+                /**/
+
+                /**/
+
+                ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Computación ComIT</h1>
+    <p class="lead">Computación ComIT venta de insumos informáticos</p>
+</div>
+
+@if (Computacion.Models.IdentityExtensions.GetUsuarioRol(User.Identity) != 99)
+{
+<div class="row">
+    <div class="col-md-4">
+        <h2>Articulos</h2>
+        <p>
+            Vea nuestra lista de artículos variados de insumos de PC.
+        </p>
+        <p><a class="btn btn-danger" href="../Categoria/ListaCategoria">Ver Artículos &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Carrito de Compras</h2>
+        <p>
+            Puede consultar todo lo agregado a su carro de compras.
+        </p>
+        <p><a class="btn btn-danger" href="../VentaMaster/Ventas">Ver Carrito &raquo;</a></p>
+    </div>
+    @if (User.Identity.Name != "")
+    {
+        <h2>Compras</h2>
+        <p>
+            Muestra la lista de compras que ha realizado.
+        </p>
+        <p><a class="btn btn-danger" href="../VentaMaster/Index">Ver Carrito &raquo;</a></p>
+    }
+    else
+    {
+        <div class="col-md-4">
+            <h2>Registro</h2>
+            <p>
+                Usted debe estar registrado para realizar cualquier compra. Por favor registrese y disfrute de su compra.
+            </p>
+            <p><a class="btn btn-danger" href="../Account/Register">Ver Registro &raquo;</a></p>
+        </div>
+    }
+</div>
+}
+@if (Computacion.Models.IdentityExtensions.GetUsuarioRol(User.Identity).Equals(99))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Agregar Artículos</h2>
+            <p>
+                Agrega nuevos artículos a la lista.
+            </p>
+            <p><a class="btn btn-danger" href="../Articulo/Create">Agregar Articulo &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Compra de Artículo</h2>
+            <p>
+                Realiza la reposicón de stock junto su nuevo precio de compra y de venta.
+            </p>
+            <p><a class="btn btn-danger" href="../Compra/Compras">Comprar Artículo &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Ver Ventas</h2>
+            <p>
+                Listado de ventas realizadas por los usuarios.
+            </p>
+            <p><a class="btn btn-danger" href="../VentaMaster/ListaVentas">Ver Registro &raquo;</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Buscar Usuario</h2>
+            <p>
+                Buscar a un usuario para ver sus datos y las compras que realizó.
+            </p>
+            <p><a class="btn btn-danger" href="../Usuario/Index">Buscar Usuario &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Dar Baja Artículo</h2>
+            <p>
+                Eliminar artículo de la lista para que no pueda ser comprado.
+            </p>
+            <p><a class="btn btn-danger" href="../Articulo/DarDeBaja">Dar de baja &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Comprobar Stock</h2>
+            <p>
+                Comprueba el stock de todos los productos y muestra los artículos cuya cantidad sea 2 o menos.
+            </p>
+            <p><a class="btn btn-danger" href="../Articulo/ComprobarStock">Comprobar Stock &raquo;</a></p>
+        </div>
+    </div>
+}

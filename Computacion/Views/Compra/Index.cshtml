@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Computacion.Models.Compra>
+
+<p>
+    <a href="@Url.Action("Compras")" class="btn btn-danger">Nueva Compra</a>
+    @*@Html.ActionLink("Nueva", "Compra")*@
+</p>
+<table class="table">
+    <tr class="danger">
+        <th>
+            @Html.DisplayNameFor(model => model.IdArticulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrecioCompra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrecioVenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="info">
+        <td>
+            @Html.DisplayFor(modelItem => item.IdArticulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrecioCompra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrecioVenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha, "{0:dd/MM/yyyy}")
+        </td>        
+    </tr>
+}
+
+</table>

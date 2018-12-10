@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Computacion.Models.Articulo>
+
+@{
+    ViewBag.Title = "ComprobarStock";
+}
+<link href="~/Content/Lista.css" rel="stylesheet" />
+<h2>Comprobar Stock</h2>
+<p></p>
+<p></p>
+<br />
+
+<div>
+    @{ int i = 0;}
+    @foreach (var item in Model.OrderBy(x => x.PrecioVenta))
+    {
+        i++;
+        if (i % 3 == 0)
+        {
+            <div class="row">
+                <div class="column" id="borderDemo">
+                    <h5 align="center">@Html.DisplayFor(modelItem => item.Descripcion) </h5> 
+                    <h4 align="center">Stock: @Html.DisplayFor(modelItem => item.Stock) </h4> 
+                    <h5 align="center">@Html.DisplayFor(modelItem => item.DescripcionCategoria) </h5> 
+                    <h5 align="center">@Html.DisplayFor(modelItem => item.DescripcionSubCategoria) </h5>
+                    <h5 align="center"><a href="javascript:void(0);" onclick="BuscarArticuloPorId(@item.Id)" class="btn btn-danger">Seleccionar</a> </h5>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="column" id="borderDemo">
+                <h5 align="center">@Html.DisplayFor(modelItem => item.Descripcion) </h5>
+                <h4 align="center">Stock: @Html.DisplayFor(modelItem => item.Stock) </h4> 
+                <h5 align="center">@Html.DisplayFor(modelItem => item.DescripcionCategoria) </h5> 
+                <h5 align="center">@Html.DisplayFor(modelItem => item.DescripcionSubCategoria) </h5> 
+                <h5 align="center"><a href="javascript:void(0);" onclick="BuscarArticuloPorId(@item.Id)" class="btn btn-danger">Seleccionar</a></h5>
+            </div>
+        }
+    }
+</div>
+
+
+<script>   
+
+    function BuscarArticuloPorId(idArticulo) {        
+        $.ajax({            
+            success: function () {        
+             
+                window.location = "/Compra/ComprasIdArticulo?id=" + idArticulo;
+                  //  BuscarArticuloPorId2(idArticulo);                    
+            },
+            error: function (ArticuloRetorno) {
+                alert("Se ha producido un error.");
+            }
+        });
+    }
+
+</script>

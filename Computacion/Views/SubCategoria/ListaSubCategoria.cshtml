@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Computacion.Models.SubCategoria>
+
+@{
+    ViewBag.Title = "ListaSubCategoria";
+}
+
+<h2>SubCategorias</h2>
+<p></p>
+<p></p>
+<br />
+@*@Html.ActionLink("Volver a Categoría", "ListaCategoria", "Categoria")*@
+<a href="@Url.Action("ListaCategoria", "Categoria")" class="btn btn-danger">Volver a Categoría</a>
+<p></p>
+<p></p>
+<br />
+<link href="~/Content/Lista.css" rel="stylesheet" />
+<div>
+    @{ int i = 0;}
+    @foreach (var item in Model.OrderBy(x => x.Descripcion))
+    {
+        i++;        
+        if (i % 3 == 0)
+        {
+            <div class="row">
+                <div class="column" id="borderDemo">
+                    <h4 align="center">@Html.DisplayFor(modelItem => item.Descripcion) </h4> <br>                    
+                    <h4 align="center"><a href="@Url.Action("ListaArticulos", "Articulo", new {id = item.Id})" class="btn btn-danger">Seleccionar</a></h4>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="column" id="borderDemo">
+                <h4 align="center">@Html.DisplayFor(modelItem => item.Descripcion) </h4> <br>
+                <h4 align="center"><a href="@Url.Action("ListaArticulos", "Articulo", new {id = item.Id})" class="btn btn-danger">Seleccionar</a></h4>
+            </div>
+        }
+    }
+</div>
